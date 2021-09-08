@@ -25,7 +25,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         usuarios = new javax.swing.JMenuItem();
         os = new javax.swing.JMenuItem();
         cliente = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        relas = new javax.swing.JMenu();
         servicos = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         sobre = new javax.swing.JMenuItem();
@@ -34,7 +34,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela principal");
-        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -61,6 +60,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1.setText("Cadastro");
 
         usuarios.setText("Usuários");
+        usuarios.setEnabled(false);
         usuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuariosActionPerformed(evt);
@@ -81,12 +81,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Relatório");
+        relas.setText("Relatório");
+        relas.setEnabled(false);
 
         servicos.setText("Serviços");
-        jMenu2.add(servicos);
+        relas.add(servicos);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(relas);
 
         jMenu3.setText("Ajuda");
 
@@ -119,7 +120,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menu)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(user)
@@ -142,7 +143,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void usuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariosActionPerformed
-        // TODO add your handling code here:
+        TelaUsuarios tl = new TelaUsuarios();
+        tl.setVisible(true);
+        menu.add(tl);
     }//GEN-LAST:event_usuariosActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
@@ -205,17 +208,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem cliente;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lbldata;
     private javax.swing.JDesktopPane menu;
     private javax.swing.JMenuItem os;
+    public static javax.swing.JMenu relas;
     private javax.swing.JMenuItem sair;
     private javax.swing.JMenuItem servicos;
     private javax.swing.JMenuItem sobre;
-    private javax.swing.JLabel user;
-    private javax.swing.JMenuItem usuarios;
+    public javax.swing.JLabel user;
+    public static javax.swing.JMenuItem usuarios;
     // End of variables declaration//GEN-END:variables
 }

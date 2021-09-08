@@ -17,10 +17,21 @@ public class Login extends javax.swing.JFrame {
             pst.setString(2, senha);
             rs = pst.executeQuery();
             if (rs.next()){
-                TelaPrincipal tela = new TelaPrincipal();
-                tela.setVisible(true);
-                this.dispose();
-                conexao.close();
+                String perfil = rs.getString(6);
+                if(perfil.equals("admin")){
+                    TelaPrincipal tela = new TelaPrincipal();
+                    tela.setVisible(true);
+                    tela.usuarios.setEnabled(true);
+                    tela.relas.setEnabled(true);
+                    tela.user.setText(rs.getString(2));
+                    this.dispose();
+                    conexao.close(); 
+                } else {
+                    TelaPrincipal tela = new TelaPrincipal();
+                    tela.setVisible(true);
+                    this.dispose();
+                    conexao.close(); 
+                }
             } else{
                 JOptionPane.showMessageDialog(null, "A senha e/ou login estão incorretos!");
             }

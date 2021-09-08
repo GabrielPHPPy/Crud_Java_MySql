@@ -1,9 +1,5 @@
 package br.com.loja.telas;
 public class TelaSobre extends javax.swing.JFrame {
-
-    /**
-     * Creates new form TelaSobre
-     */
     public TelaSobre() {
         initComponents();
     }
