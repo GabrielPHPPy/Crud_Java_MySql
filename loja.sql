@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Ago-2021 às 22:31
+-- Tempo de geração: 08-Set-2021 às 20:30
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 8.0.0
 
@@ -72,15 +72,19 @@ CREATE TABLE `usuarios` (
   `usuario` varchar(50) NOT NULL,
   `fone` varchar(15) DEFAULT NULL,
   `login` varchar(15) NOT NULL,
-  `senha` varchar(15) NOT NULL
+  `senha` varchar(15) NOT NULL,
+  `perfil` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`iduser`, `usuario`, `fone`, `login`, `senha`) VALUES
-(1, 'gabriel', '119887', 'gabrielA8', 'gabriel');
+INSERT INTO `usuarios` (`iduser`, `usuario`, `fone`, `login`, `senha`, `perfil`) VALUES
+(1, 'gabriel', '119887', 'gabrielA8', 'gabriel', 'admin'),
+(2, 'a', '12', 'a', 'a', 'admin'),
+(3, 'administrador', '784', 'adm', 'adm', 'admin'),
+(4, 'usuar', '65', 'usuar', 'u', 'user');
 
 --
 -- Índices para tabelas despejadas
@@ -126,7 +130,7 @@ ALTER TABLE `ordem_servicos`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restrições para despejos de tabelas
