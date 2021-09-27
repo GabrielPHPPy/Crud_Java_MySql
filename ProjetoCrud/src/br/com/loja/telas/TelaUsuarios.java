@@ -60,6 +60,58 @@ public class TelaUsuarios extends javax.swing.JInternalFrame {
         }
     }
     
+    private void update(){
+        String sql = "UPDATE usuarios set usuario=?, fone=?, login=?, senha=?, perfil=? where iduser=?";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, nome.getText());
+            pst.setString(2, telefone.getText());
+            pst.setString(3, email.getText());
+            String senhaA = new String(senha.getPassword());
+            pst.setString(4, senhaA);
+            pst.setString(5, PerfilCombo.getSelectedItem().toString());
+            pst.setString(6, id.getText());
+            if (id.getText().isEmpty() || nome.getText().isEmpty() || telefone.getText().isEmpty() || email.getText().isEmpty() || senha.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            }else {
+                int adicionado = pst.executeUpdate();
+                if (adicionado > 0) {
+                    id.setText(null);
+                    nome.setText(null);
+                    telefone.setText(null);
+                    email.setText(null);
+                    senha.setText(null);
+                    PerfilCombo.setSelectedItem(null);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    private void deletar(){
+        int confirma = JOptionPane.showConfirmDialog(null, "Deseja mesmo remover este usuário?", "Atenção!", JOptionPane.YES_NO_OPTION);
+        if (confirma == JOptionPane.YES_OPTION){
+            String sql = "DELETE from usuarios WHERE iduser=?";
+            try {
+                pst = conexao.prepareStatement(sql);
+                pst.setString(1, id.getText());
+                int apaga = pst.executeUpdate();
+                if (apaga > 0){
+                    JOptionPane.showMessageDialog(null, "Usuário removido");
+                    id.setText(null);
+                    nome.setText(null);
+                    telefone.setText(null);
+                    email.setText(null);
+                    senha.setText(null);
+                    PerfilCombo.setSelectedItem(null);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }
+    
     public TelaUsuarios() {
         initComponents();
         conexao = Conector.conector();
@@ -133,9 +185,19 @@ public class TelaUsuarios extends javax.swing.JInternalFrame {
 
         editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/loja/icones/update.png"))); // NOI18N
         editar.setPreferredSize(new java.awt.Dimension(80, 80));
+        editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarActionPerformed(evt);
+            }
+        });
 
         deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/loja/icones/delete.png"))); // NOI18N
         deletar.setPreferredSize(new java.awt.Dimension(80, 80));
+        deletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletarActionPerformed(evt);
+            }
+        });
 
         senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,6 +295,14 @@ public class TelaUsuarios extends javax.swing.JInternalFrame {
     private void senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_senhaActionPerformed
+
+    private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
+        update();
+    }//GEN-LAST:event_editarActionPerformed
+
+    private void deletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarActionPerformed
+        deletar();
+    }//GEN-LAST:event_deletarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
