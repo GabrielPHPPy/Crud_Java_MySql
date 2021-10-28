@@ -149,7 +149,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_usuariosActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
-        // TODO add your handling code here:
+        TelaClientes telaNova = new TelaClientes();
+        telaNova.setVisible(true);
+        menu.add(telaNova);
+            
     }//GEN-LAST:event_clienteActionPerformed
 
     private void sobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobreActionPerformed
