@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Out-2021 às 16:17
+-- Tempo de geração: 17-Nov-2021 às 22:37
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 8.0.0
 
@@ -44,7 +44,7 @@ CREATE TABLE `clientes` (
 INSERT INTO `clientes` (`idcli`, `nomecli`, `endcli`, `fonecli`, `emailcli`) VALUES
 (1, 'Gabriel', 'rua rua', '119998', 'kaka@kaka.jaja'),
 (3, 'Gustavo', 'rua rua', '119998', 'kaka@kaka.jaja'),
-(4, 'Gi', 'gi', 'gi', 'gi'),
+(4, 'GA', 'gi', 'gi', 'gi'),
 (5, 'gerl', 'gerl', 'gerl', 'gerl');
 
 -- --------------------------------------------------------
@@ -56,6 +56,8 @@ INSERT INTO `clientes` (`idcli`, `nomecli`, `endcli`, `fonecli`, `emailcli`) VAL
 CREATE TABLE `ordem_servicos` (
   `os` int(11) NOT NULL,
   `data_os` timestamp NOT NULL DEFAULT current_timestamp(),
+  `tipo` varchar(20) NOT NULL,
+  `situacao` varchar(50) NOT NULL,
   `equipamento` varchar(150) NOT NULL,
   `defeito` varchar(150) NOT NULL,
   `servico` varchar(150) DEFAULT NULL,
@@ -63,6 +65,13 @@ CREATE TABLE `ordem_servicos` (
   `valor` decimal(10,2) DEFAULT NULL,
   `idcli` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `ordem_servicos`
+--
+
+INSERT INTO `ordem_servicos` (`os`, `data_os`, `tipo`, `situacao`, `equipamento`, `defeito`, `servico`, `tecnico`, `valor`, `idcli`) VALUES
+(1, '2021-11-17 21:34:46', 'Ordem de serviço', 'Aguardando Aprovação', 'Computador', 'Memória RAM estragada', 'reposição da peça', 'aSDad', '321.00', 1);
 
 -- --------------------------------------------------------
 
@@ -127,7 +136,7 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de tabela `ordem_servicos`
 --
 ALTER TABLE `ordem_servicos`
-  MODIFY `os` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `os` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
