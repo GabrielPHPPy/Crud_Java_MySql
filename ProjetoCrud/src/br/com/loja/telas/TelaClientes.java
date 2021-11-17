@@ -8,6 +8,7 @@ package br.com.loja.telas;
 import java.sql.*;
 import br.com.loja.dal.Conector;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 public class TelaClientes extends javax.swing.JInternalFrame {
 
@@ -45,11 +46,7 @@ public class TelaClientes extends javax.swing.JInternalFrame {
                 int adicionado = pst.executeUpdate();
                 if (adicionado > 0) {
                     JOptionPane.showMessageDialog(null, "Cliente foi alterado com sucesso!");
-                    txtId.setText(null);
-                    txtNome.setText(null);
-                    txtEndereco.setText(null);
-                    txtTel.setText(null);
-                    txtEmail.setText(null);
+                    remover();
                 }
             }
         } catch (Exception e) {
@@ -68,11 +65,7 @@ public class TelaClientes extends javax.swing.JInternalFrame {
                 int apa = pst.executeUpdate();
                 if (apa > 0){
                     JOptionPane.showMessageDialog(null, "Usuário removido");
-                    txtId.setText(null);
-                    txtNome.setText(null);
-                    txtTel.setText(null);
-                    txtEmail.setText(null);
-                    txtEndereco.setText(null);
+                    remover();
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
@@ -80,8 +73,19 @@ public class TelaClientes extends javax.swing.JInternalFrame {
         }
     }
     
+    private void remover(){
+        txtBusca.setText(null);
+        txtId.setText(null);
+        txtNome.setText(null);
+        txtEndereco.setText(null);
+        txtTel.setText(null);
+        txtEmail.setText(null);
+        ((DefaultTableModel) tblClientes.getModel()).setRowCount(0);
+    }
+    
     private void pesquisa(){
-        String sql = "SELECT * FROM clientes WHERE nomecli LIKE ?";
+        String sql = "SELECT idcli as ID, nomecli as Nome, endcli as Endereco, "
+                + "fonecli as Telefone, emailcli as Email FROM clientes WHERE nomecli LIKE ?";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, txtBusca.getText() + "%");
@@ -107,10 +111,7 @@ public class TelaClientes extends javax.swing.JInternalFrame {
                 int adicionado = pst.executeUpdate();
                 if (adicionado > 0) {
                     JOptionPane.showMessageDialog(null, "Cliente foi adicionado!");
-                    txtNome.setText(null);
-                    txtEndereco.setText(null);
-                    txtTel.setText(null);
-                    txtEmail.setText(null);
+                    remover();
                 }
             }
         } catch (Exception e){
@@ -157,13 +158,13 @@ public class TelaClientes extends javax.swing.JInternalFrame {
 
         tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Nome", "Endereco", "Telefone", "Email"
             }
         ));
         tblClientes.addMouseListener(new java.awt.event.MouseAdapter() {

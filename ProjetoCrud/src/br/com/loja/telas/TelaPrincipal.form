@@ -23,8 +23,11 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="os">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ordem de servi&#xe7;o"/>
+                <Property name="text" type="java.lang.String" value="OS"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="osActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="cliente">
               <Properties>
@@ -113,7 +116,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="menu" max="32767" attributes="0"/>
+              <Component id="Desktop" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="user" min="-2" max="-2" attributes="0"/>
@@ -125,7 +128,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="menu" alignment="0" max="32767" attributes="0"/>
+          <Component id="Desktop" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Component id="user" min="-2" max="-2" attributes="0"/>
@@ -137,7 +140,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JDesktopPane" name="menu">
+    <Container class="javax.swing.JDesktopPane" name="Desktop">
 
       <Layout>
         <DimensionLayout dim="0">

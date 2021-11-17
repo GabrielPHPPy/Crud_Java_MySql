@@ -17,7 +17,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menu = new javax.swing.JDesktopPane();
+        Desktop = new javax.swing.JDesktopPane();
         user = new javax.swing.JLabel();
         lbldata = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -40,14 +40,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
-        menu.setLayout(menuLayout);
-        menuLayout.setHorizontalGroup(
-            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout DesktopLayout = new javax.swing.GroupLayout(Desktop);
+        Desktop.setLayout(DesktopLayout);
+        DesktopLayout.setHorizontalGroup(
+            DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 398, Short.MAX_VALUE)
         );
-        menuLayout.setVerticalGroup(
-            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        DesktopLayout.setVerticalGroup(
+            DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -68,7 +68,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(usuarios);
 
-        os.setText("Ordem de serviço");
+        os.setText("OS");
+        os.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                osActionPerformed(evt);
+            }
+        });
         jMenu1.add(os);
 
         cliente.setText("Cliente");
@@ -120,7 +125,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(menu)
+                .addComponent(Desktop)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(user)
@@ -129,7 +134,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu)
+            .addComponent(Desktop)
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(user)
@@ -145,13 +150,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void usuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariosActionPerformed
         TelaUsuarios tl = new TelaUsuarios();
         tl.setVisible(true);
-        menu.add(tl);
+        Desktop.add(tl);
     }//GEN-LAST:event_usuariosActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
         TelaClientes telaNova = new TelaClientes();
         telaNova.setVisible(true);
-        menu.add(telaNova);
+        Desktop.add(telaNova);
             
     }//GEN-LAST:event_clienteActionPerformed
 
@@ -172,6 +177,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_sairActionPerformed
+
+    private void osActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_osActionPerformed
+        TelaOs os = new TelaOs();
+        os.setVisible(true);
+        Desktop.add(os);
+    }//GEN-LAST:event_osActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,13 +220,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane Desktop;
     private javax.swing.JMenuItem cliente;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lbldata;
-    private javax.swing.JDesktopPane menu;
     private javax.swing.JMenuItem os;
     public static javax.swing.JMenu relas;
     private javax.swing.JMenuItem sair;
