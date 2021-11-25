@@ -23,6 +23,46 @@ public class TelaOs extends javax.swing.JInternalFrame {
         initComponents();
         conexao = Conector.conector();
     }
+    
+    private void pesquisar_os(){
+    
+        String num_os = JOptionPane.showInputDialog("Número da OS: ");
+        String sql = "Select * FROM ordem_servicos WHERE os = " + num_os;
+        try {
+            pst = conexao.prepareStatement(sql);
+            rs = pst.executeQuery();
+            if (rs.next()){
+                txtOs.setText(rs.getString(1));
+                txtData.setText(rs.getString(2));
+                
+                String radio_tipo = rs.getString(3);
+                if (radio_tipo.equals("Ordem de serviço")){
+                    rbtOs.setSelected(true);
+                    tipo = "Ordem de serviço";
+                } else {
+                    rbtOrc.setSelected(true);
+                    tipo = "Orçamento";
+                }
+                cboSituacao.setSelectedItem(rs.getString(4));
+                txtOsEquip.setText(rs.getString(5));
+                txtOsDef.setText(rs.getString(6));
+                txtOsServ.setText(rs.getString(9));
+                txtOsTec.setText(rs.getString(7));
+                txtOsValor.setText(rs.getString(8));
+                txtIdCli.setText(rs.getString(10));
+                
+                btnOsAdicionar.setEnabled(false);
+                txtCliPesquisar.setEnabled(false);
+                TblClientes.setEnabled(false);
+            } else{
+                JOptionPane.showMessageDialog(null, "Ordem de serviço não cadastrada");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    
     private void pesquisar_clientes(){
         String sql = "Select idcli as Id, nomecli as Nome, fonecli as Fone"
                 + " FROM clientes WHERE nomecli LIKE ?";
@@ -306,6 +346,11 @@ public class TelaOs extends javax.swing.JInternalFrame {
         btnOsImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/loja/icones/print.png"))); // NOI18N
 
         btnOsPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/loja/icones/read.png"))); // NOI18N
+        btnOsPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOsPesquisarActionPerformed(evt);
+            }
+        });
 
         btnOsAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/loja/icones/update.png"))); // NOI18N
         btnOsAlterar.addActionListener(new java.awt.event.ActionListener() {
@@ -456,6 +501,10 @@ public class TelaOs extends javax.swing.JInternalFrame {
     private void btnOsAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOsAdicionarActionPerformed
         emitir_os();
     }//GEN-LAST:event_btnOsAdicionarActionPerformed
+
+    private void btnOsPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOsPesquisarActionPerformed
+        pesquisar_os();
+    }//GEN-LAST:event_btnOsPesquisarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
